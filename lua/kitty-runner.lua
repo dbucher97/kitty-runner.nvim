@@ -95,7 +95,7 @@ end
 local function define_commands()
   cmd[[command! KittyReRunCommand lua require('kitty-runner').re_run_command()]]
   cmd[[command! -range KittySendLines lua require('kitty-runner').run_command(vim.region(0, vim.fn.getpos("'<"), vim.fn.getpos("'>"), "l", false)[0])]]
-  cmd[[command! KittyRunCommand lua require('kitty-runner').prompt_run_command($1)]]
+  cmd[[command! -nargs=1 KittyRunCommand lua require('kitty-runner').prompt_run_command(<f-args>)]]
   cmd[[command! KittyClearRunner lua require('kitty-runner').clear_runner()]]
   cmd[[command! KittyKillRunner lua require('kitty-runner').kill_runner()]]
   cmd[[command! KittyOpenRunner lua require('kitty-runner').open_new_runner()]]
