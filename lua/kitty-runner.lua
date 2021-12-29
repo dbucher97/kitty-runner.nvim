@@ -62,9 +62,9 @@ function M.re_run_command()
   end
 end
 
-function M.prompt_run_command()
+function M.prompt_run_command(commandarg)
   fn.inputsave()
-  local command = fn.input("Command: ")
+  local command = commandarg or fn.input("Command: ")
   fn.inputrestore()
   whole_command = command .. '\r'
   if Cfg.runner_is_open == true then
@@ -89,9 +89,10 @@ end
 local function define_commands()
   cmd[[command! KittyReRunCommand lua require('kitty-runner').re_run_command()]]
   cmd[[command! -range KittySendLines lua require('kitty-runner').run_command(vim.region(0, vim.fn.getpos("'<"), vim.fn.getpos("'>"), "l", false)[0])]]
-  cmd[[command! KittyRunCommand lua require('kitty-runner').prompt_run_command()]]
+  cmd[[command! KittyRunCommand lua require('kitty-runner').prompt_run_command($1)]]
   cmd[[command! KittyClearRunner lua require('kitty-runner').clear_runner()]]
   cmd[[command! KittyKillRunner lua require('kitty-runner').kill_runner()]]
+  cmd[[command! KittyOpenRunner lua require('kitty-runner').open_new_runner()]]
 end
 
 local function define_keymaps()
