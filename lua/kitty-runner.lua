@@ -20,7 +20,7 @@ local function open_new_runner()
 end
 
 local function send_kitty_command(cmd_args, command)
-  local args = {'@', '--match=title:' .. Cfg.runner_name}
+  local args = {'@'}
   for _, v in pairs(cmd_args) do
     table.insert(args, v)
   end
@@ -116,8 +116,6 @@ function M.setup(cfg_)
   else
     Cfg.use_keymaps = true
   end
-  math.randomseed(os.time())
-  Cfg.kitty_port = 'unix:/tmp/kitty' .. math.random(10000, 99999)
   define_commands()
   if Cfg.use_keymaps == true then
     define_keymaps()
