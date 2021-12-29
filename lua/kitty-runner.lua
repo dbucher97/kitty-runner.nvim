@@ -45,11 +45,10 @@ function M.run_command(region)
   whole_command = prepare_command(region)
   -- delete visual selection marks
   vim.cmd([[delm <>]])
-  if Cfg.runner_is_open == true then
-    send_kitty_command(Cfg.run_cmd, whole_command)
-  else
+  if Cfg.runner_is_open == false then
     open_new_runner()
   end
+  send_kitty_command(Cfg.run_cmd, whole_command)
 end
 
 function M.open_new_runner()
@@ -60,11 +59,10 @@ end
 
 function M.re_run_command()
   if whole_command then
-    if Cfg.runner_is_open == true then
-      send_kitty_command(Cfg.run_cmd, whole_command)
-    else
+    if Cfg.runner_is_open == false then
       open_new_runner()
     end
+    send_kitty_command(Cfg.run_cmd, whole_command)
   end
 end
 
@@ -73,11 +71,10 @@ function M.prompt_run_command(commandarg)
   local command = commandarg or fn.input("Command: ")
   fn.inputrestore()
   whole_command = command .. '\r'
-  if Cfg.runner_is_open == true then
-    send_kitty_command(Cfg.run_cmd, whole_command)
-  else
+  if Cfg.runner_is_open == false then
     open_new_runner()
   end
+  send_kitty_command(Cfg.run_cmd, whole_command)
 end
 
 function M.kill_runner()
