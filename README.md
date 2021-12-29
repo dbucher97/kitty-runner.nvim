@@ -1,5 +1,7 @@
 # kitty-runner.nvim
 
+This is a fork of [jghauser/kitty-runner.nvim](https://github.com/jghauser/kitty-runner.nvim). I like it better when the terminal appears in the kitty window, which runs nvim itself.
+
 A neovim plugin written in lua that allows you to easily send lines from the current buffer to another kitty terminal. I use it mostly as a poor man's REPL, e.g. I start ipython in the kitty terminal and send buffer lines to it.
 
 This plugin is inspired by and heavily borrows from [vim-kitty-runner](https://github.com/LkeMitchll/vim-kitty-runner).
