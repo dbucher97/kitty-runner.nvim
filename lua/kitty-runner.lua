@@ -14,14 +14,13 @@ local whole_command
 
 local function open_new_runner()
   loop.spawn('kitty', {
-      args = {'@', 'launch', 'allow_remote_control=yes',
-      '--listen-on=' .. Cfg.kitty_port, '--title=' .. Cfg.runner_name}
+      args = {'@', 'launch', '--title=' .. Cfg.runner_name}
     })
   Cfg.runner_is_open = true
 end
 
 local function send_kitty_command(cmd_args, command)
-  local args = {'@', '--to=' .. Cfg.kitty_port}
+  local args = {'@', '--match=title:' .. Cfg.runner_name}
   for _, v in pairs(cmd_args) do
     table.insert(args, v)
   end
