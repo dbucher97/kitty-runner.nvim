@@ -14,7 +14,9 @@ local whole_command
 
 local function open_new_runner()
   loop.spawn('kitty', {
-    args = {'-o', 'allow_remote_control=yes', '--listen-on=' .. Cfg.kitty_port, '--title=' .. Cfg.runner_name}})
+      args = {'@', 'launch', 'allow_remote_control=yes',
+      '--listen-on=' .. Cfg.kitty_port, '--title=' .. Cfg.runner_name}
+    })
   Cfg.runner_is_open = true
 end
 
