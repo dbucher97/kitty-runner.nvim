@@ -52,6 +52,12 @@ function M.run_command(region)
   end
 end
 
+function M.open_new_runner()
+  if Cfg.runner_is_open == false then
+    open_new_runner()
+  end
+end
+
 function M.re_run_command()
   if whole_command then
     if Cfg.runner_is_open == true then
